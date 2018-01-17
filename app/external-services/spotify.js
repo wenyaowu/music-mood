@@ -1,3 +1,5 @@
+const request = require('request');
+
 const spotify = function(options) {
 
     if(!options.clientId || !options.clientSecret || !options.redirectUrl) {
@@ -6,25 +8,25 @@ const spotify = function(options) {
     const AUTH_URI = 'https://accounts.spotify.com';
     const API_URI = 'https://api.spotify.com/v1';
 
-    const CLIENT_ID = options.clientID;
+    const CLIENT_ID = options.clientId;
     const CLIENT_SECRET = options.clientSecret;
     const REDIRECT_URL = options.redirectUrl;
 
 
-    function exchangeAccessAndRefreshToken(code) {
+    function auth(code) {
         return new Promise(function(resolve, reject){
             let params = {
                 method : 'POST',
-                uri : `${config.spotify.authBaseUrl}/api/token`,
+                uri : `${AUTH_URI}/api/token`,
                 qs : {
                     grant_type : "authorization_code",
                     code : code,
-                    redirect_uri : config.spotify.redirectUrl
+                    redirect_uri : REDIRECT_URL
                 },
                 json : true,
                 headers : {
                     "Content-Type": 'application/x-www-form-urlencoded',
-                    "Authorization" : `Basic ${Buffer.from(`${config.spotify.clientId}:${config.spotify.clientSecret}`).toString('base64')}`
+                    "Authorization" : `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`
                 }
             };
             request(params, function(error, response, body){
@@ -40,6 +42,7 @@ const spotify = function(options) {
     }
 
 
-    return {}
+    return { auth }
 };
 
+module.exports = spotify;
