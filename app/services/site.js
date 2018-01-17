@@ -1,5 +1,6 @@
 const config = require('../configs');
 const request = require('request');
+const sessionKeys = require('../constants/sessionKeys');
 
 function exchangeAccessAndRefreshToken(code) {
     return new Promise(function(resolve, reject){
@@ -23,6 +24,8 @@ function exchangeAccessAndRefreshToken(code) {
             } else if (response.statusCode!==200) {
                 reject(`Error while exchanging token, statusCode: ${response.statusCode}`);
             } else {
+                sessionStorage.setItem(sessionKeys.SPOTIFY_ACCESS_TOKEN, body['access_token']);
+                sessionStorage.setItem(sessionKeys.SPOTIFY_REFRESH_TOKEN, body['refresh_token']);
                 resolve(body);
             }
         })

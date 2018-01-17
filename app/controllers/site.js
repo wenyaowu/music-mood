@@ -24,4 +24,5 @@ async function spotifyAuthCallback(req, res){
         throw new Error('Error while authenticate with spotify', res.query.error);
     }
 }
+
 module.exports = { index, spotifyAuthCallback };
