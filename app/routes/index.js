@@ -1,3 +1,7 @@
-/**
- * Created by evanwu on 1/15/18.
- */
+const routes = (app) => {
+    app.use('/api', require('./apis'));
+    app.use('/', require('./site'));
+
+};
+
+module.exports = routes;

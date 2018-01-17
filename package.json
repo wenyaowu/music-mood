@@ -9,7 +9,10 @@
   "author": "Evan Wu",
   "license": "ISC",
   "dependencies": {
+    "build-url": "^1.0.10",
     "express": "^4.16.2",
-    "js-yaml": "^3.10.0"
+    "mustache": "^2.3.0",
+    "mustache-express": "^1.2.5",
+    "nconf": "^0.10.0"
   }
 }
