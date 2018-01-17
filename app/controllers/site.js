@@ -3,7 +3,7 @@ const buildUrl = require('build-url');
 
 
 
-const index = function(req, res){
+function index(req, res){
     let spotifyAuthUrl = buildUrl(config.spotify.authBaseUrl, {
             path: 'authorize',
             queryParams: {

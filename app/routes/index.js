@@ -1,7 +1,6 @@
-const routes = (app) => {
+function routes(app) {
     app.use('/api', require('./apis'));
     app.use('/', require('./site'));
-
 };
 
 module.exports = routes;
