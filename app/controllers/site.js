@@ -1,7 +1,6 @@
 const config = require('../configs');
 const buildUrl = require('build-url');
-
-
+const siteService = require('../services/site');
 
 function index(req, res){
     let spotifyAuthUrl = buildUrl(config.spotify.authBaseUrl, {
@@ -14,6 +13,15 @@ function index(req, res){
             }
         });
 
-    res.render('index', {spotifyAuthUrl : spotifyAuthUrl});
-};
-module.exports = { index };
+    res.render('welcome', { spotifyAuthUrl : spotifyAuthUrl });
+}
+
+async function spotifyAuthCallback(req, res){
+    if (req.query.code) {
+        let response = await siteService.exchangeAccessAndRefreshToken(req.query.code);
+        res.render('index', { accessToken: response['access_token']})
+    } else {
+        throw new Error('Error while authenticate with spotify', res.query.error);
+    }
+}
+module.exports = { index, spotifyAuthCallback };
