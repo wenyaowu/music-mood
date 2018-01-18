@@ -17,11 +17,19 @@ async function exchangeAccessAndRefreshToken(code) {
 async function getRecentPlayedTracks() {
     const EXECUTIONS = 11;
     let results = [];
-    let reducePromise = _.range(EXECUTIONS).reduce((promise) => {
+    let reducePromise = _.range(EXECUTIONS).reduce((promise, idx) => {
         return promise.then((result) => {
             results = results.concat(result['tracks']);
             let nextUrl = result['next'];
-            return spotify.getRecentPlayedTracks(nextUrl);
+            if(idx===0 || nextUrl) {
+                return spotify.getRecentPlayedTracks(nextUrl);
+            }
+            else {
+                return Promise.resolve({
+                    tracks:[],
+                    nextUrl:undefined
+                })
+            }
         }).catch((err) => {
             console.log('Error while retrieving recent played tracks', err.stack);
         })
@@ -36,11 +44,18 @@ async function getRecentPlayedTracks() {
 async function getTopTracks() {
     const EXECUTIONS = 6; //Top 20 * 5 tracks
     let results = [];
-    let reducePromise = _.range(EXECUTIONS).reduce((promise) => {
+    let reducePromise = _.range(EXECUTIONS).reduce((promise, idx) => {
         return promise.then((result) => {
             results = results.concat(result['tracks']);
             let nextUrl = result['next'];
-            return spotify.getTopTracks(nextUrl);
+            if (idx === 0 || nextUrl){
+                return spotify.getTopTracks(nextUrl);
+            } else {
+                return Promise.resolve({
+                    tracks:[],
+                    nextUrl:undefined
+                })
+            }
         }).catch((err) => {
             console.log('Error while retrieving recent played tracks', err.stack);
         })
