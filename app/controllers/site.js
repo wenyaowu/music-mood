@@ -13,7 +13,6 @@ function index(req, res){
                 scope : encodeURIComponent('user-read-private,user-read-email, user-top-read, user-read-recently-played')
             }
         });
-
     res.render('welcome', { spotifyAuthUrl : spotifyAuthUrl });
 }
 
@@ -30,7 +29,11 @@ async function spotifyAuthCallback(req, res){
 
 async function getRecentPlayedTracks(req, res) {
     let response = await siteService.getRecentPlayedTracks();
-    res.send(response);
+    let tracks = response.map((i) => { return i.name });
+    res.send(JSON.stringify({
+        tracks : tracks,
+        numberOfSongs : tracks.length
+    }));
 }
 
 module.exports = { index, spotifyAuthCallback, getRecentPlayedTracks };

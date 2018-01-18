@@ -12,6 +12,7 @@
     "build-url": "^1.0.10",
     "express": "^4.16.2",
     "express-sessions": "^1.0.6",
+    "lodash": "^4.17.4",
     "mustache": "^2.3.0",
     "mustache-express": "^1.2.5",
     "nconf": "^0.10.0",

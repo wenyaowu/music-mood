@@ -4,6 +4,7 @@ const spotify = require('../external-services/spotify')({
     clientSecret : config.spotify.clientSecret,
     redirectUrl : config.spotify.redirectUrl
 });
+let _ = require('lodash');
 
 async function exchangeAccessAndRefreshToken(code) {
     try {
@@ -14,11 +15,22 @@ async function exchangeAccessAndRefreshToken(code) {
 }
 
 async function getRecentPlayedTracks() {
-    try {
-        return await spotify.getRecentPlayedTracks();
-    } catch (err) {
-        throw new Error('Error while retrieving data from Spotify');
-    }
+    const EXECUTIONS = 10;
+    let results = [];
+    let reducePromise = _.range(EXECUTIONS).reduce((promise) => {
+        return promise.then((result) => {
+            results = results.concat(result['tracks']);
+            let nextUrl = result['next'];
+            return spotify.getRecentPlayedTracks(nextUrl);
+        }).catch((err) => {
+            console.log('Error while retrieving recent played tracks', err.stack);
+        })
+    }, Promise.resolve({
+        tracks:[],
+        nextUrl:undefined
+    }));
+    await reducePromise;
+    return results
 }
 
 module.exports = { exchangeAccessAndRefreshToken, getRecentPlayedTracks };

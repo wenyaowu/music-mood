@@ -45,11 +45,11 @@ const spotify = function(options) {
         });
     }
 
-    async function getRecentPlayedTracks() {
+    async function getRecentPlayedTracks(nextUrl) {
         return new Promise(function(resolve, reject) {
             let params = {
                 method : 'GET',
-                uri : `${API_URI}/me/player/recently-played`,
+                uri : nextUrl ? nextUrl : `${API_URI}/me/player/recently-played`,
                 json : true,
                 headers : {
                     "Authorization" : `Bearer ${ACCESS_TOKEN}`
@@ -61,7 +61,10 @@ const spotify = function(options) {
                 } else if (response.statusCode!==200) {
                     reject(`Error while exchanging token, statusCode: ${response.statusCode}`);
                 } else {
-                    resolve(body);
+                    resolve({
+                        tracks : body['items'].map((i)=> {return i.track}),
+                        nextUrl : body['next']
+                    });
                 }
             })
         })
