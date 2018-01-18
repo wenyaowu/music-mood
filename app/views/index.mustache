@@ -3,22 +3,34 @@
 
 <p>You have successfully authorized through spotify</p>
 <p>Access Token: {{accessToken}}</p>
-<p id="top-list"></p>
+<p id="show-list"></p>
 
 
-<button id="get-top"> Retrieve Your Top Artists and Tracks </button>
+<button id="get-recent"> Retrieve Your Recent Played Tracks </button>
+<button id="get-top-tracks"> Retrieve Your Recent Played Tracks </button>
 
 
 <script>
-    $('#get-top').click(function(){
+    $('#get-recent').click(function(){
         $.ajax({
             url : '/get-recent-played',
             success : function(data){
-                $('#top-list').html(data);
+                $('#show-list').html(data);
             },
             error : function() {
                 console.log('error');
             }
         })
-    })
+    });
+    $('#get-top-tracks').click(function(){
+        $.ajax({
+            url : '/get-top-tracks',
+            success : function(data){
+                $('#show-list').html(data);
+            },
+            error : function() {
+                console.log('error');
+            }
+        })
+    });
 </script>

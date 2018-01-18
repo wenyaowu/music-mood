@@ -28,12 +28,13 @@ async function spotifyAuthCallback(req, res){
 }
 
 async function getRecentPlayedTracks(req, res) {
-    let response = await siteService.getRecentPlayedTracks();
-    let tracks = response.map((i) => { return i.name });
-    res.send(JSON.stringify({
-        tracks : tracks,
-        numberOfSongs : tracks.length
-    }));
+    let tracks = await siteService.getRecentPlayedTracks();
+    res.render('tracksList', { tracks: tracks });
 }
 
-module.exports = { index, spotifyAuthCallback, getRecentPlayedTracks };
+async function getTopTracks(req, res) {
+    let tracks = await siteService.getTopTracks();
+    res.render('tracksList', { tracks: tracks });
+}
+
+module.exports = { index, spotifyAuthCallback, getRecentPlayedTracks, getTopTracks };

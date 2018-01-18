@@ -15,6 +15,8 @@ const spotify = function(options) {
     let ACCESS_TOKEN;
     let REFRESH_TOKEN;
 
+    //TODO: Handle access token timeout
+
     function auth(code) {
         return new Promise(function(resolve, reject){
             let params = {
@@ -70,8 +72,32 @@ const spotify = function(options) {
         })
     }
 
+    async function getTopTracks(nextUrl) {
+        return new Promise(function(resolve, reject) {
+            let params = {
+                method : 'GET',
+                uri : nextUrl ? nextUrl :`${API_URI}/me/top/tracks`,
+                json : true,
+                headers : {
+                    "Authorization" : `Bearer ${ACCESS_TOKEN}`
+                }
+            };
+            request(params, function(error, response, body){
+                if (error) {
+                    reject('Error while exchanging token', error.stack);
+                } else if (response.statusCode!==200) {
+                    reject(`Error while exchanging token, statusCode: ${response.statusCode}`);
+                } else {
+                    resolve({
+                        tracks : body['items'],
+                        nextUrl : body['next']
+                    });
+                }
+            })
+        })
+    }
 
-    return { auth, getRecentPlayedTracks }
+    return { auth, getRecentPlayedTracks, getTopTracks }
 };
 
 module.exports = spotify;
