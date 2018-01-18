@@ -47,7 +47,29 @@ const spotify = function(options) {
         });
     }
 
-    async function getRecentPlayedTracks(nextUrl) {
+    function getCurrentUserInfo() {
+        return new Promise(function(resolve, reject) {
+            let params = {
+                method : 'GET',
+                uri : `${API_URI}/me`,
+                json : true,
+                headers : {
+                    "Authorization" : `Bearer ${ACCESS_TOKEN}`
+                }
+            };
+            request(params, function(error, response, body){
+                if (error) {
+                    reject('Error while exchanging token', error.stack);
+                } else if (response.statusCode!==200) {
+                    reject(`Error while exchanging token, statusCode: ${response.statusCode}`);
+                } else {
+                    resolve(body);
+                }
+            })
+        })
+    }
+
+    function getRecentPlayedTracks(nextUrl) {
         return new Promise(function(resolve, reject) {
             let params = {
                 method : 'GET',
@@ -75,7 +97,7 @@ const spotify = function(options) {
         })
     }
 
-    async function getTopTracks(nextUrl) {
+    function getTopTracks(nextUrl) {
         return new Promise(function(resolve, reject) {
             let params = {
                 method : 'GET',
@@ -103,7 +125,46 @@ const spotify = function(options) {
         })
     }
 
-    return { auth, getRecentPlayedTracks, getTopTracks }
+    function getCurrentUserPlaylists(){
+        return new Promise(function(resolve, reject) {
+            let params = {
+                method : 'GET',
+                uri : `${API_URI}/me/playlists`,
+                json : true,
+                qs : {
+                    limit: 50
+                },
+                headers : {
+                    "Authorization" : `Bearer ${ACCESS_TOKEN}`
+                }
+            };
+            request(params, function(error, response, body){
+                onResponse(error, body, [], params, resolve, reject)
+            })
+        })
+    }
+
+    function onResponse(err, body, results, params, resolve, reject) {
+        if (err) {
+            reject(err)
+        } else {
+            results = results.concat(body['items']);
+            if (body['next']) {
+                params.uri = body['next'];
+                request(params, function(err, response, body) {
+                    if(response.statusCode!==200) {
+                        onResponse(new Error(`Error while getting playlist, statusCode: ${response.statusCode}`))
+                    } else {
+                        onResponse(err, body, results, params, resolve, reject)
+                    }
+                })
+            } else {
+                resolve(results)
+            }
+        }
+    }
+
+    return { auth, getRecentPlayedTracks, getTopTracks, getCurrentUserInfo, getCurrentUserPlaylists }
 };
 
 module.exports = spotify;

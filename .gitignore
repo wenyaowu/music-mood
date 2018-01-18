@@ -1,0 +1,4 @@
+
+.idea/inspectionProfiles/
+node_modules/
+app/configs/*.json

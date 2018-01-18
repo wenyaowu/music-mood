@@ -21,6 +21,7 @@ async function spotifyAuthCallback(req, res){
         let response = await siteService.exchangeAccessAndRefreshToken(req.query.code);
         req.session[sessionKeys.SPOTIFY_ACCESS_TOKEN] = response['access_token'];
         req.session[sessionKeys.SPOTIFY_REFRESH_TOKEN] = response['refresh_token'];
+        req.session[sessionKeys.CURRENT_USER] = await siteService.getCurrentUserInfo();
         res.render('index', { accessToken: response['access_token']})
     } else {
         throw new Error('Error while authenticate with spotify', res.query.error);
@@ -37,4 +38,9 @@ async function getTopTracks(req, res) {
     res.render('tracksList', { tracks: tracks, num: tracks.length });
 }
 
-module.exports = { index, spotifyAuthCallback, getRecentPlayedTracks, getTopTracks };
+async function getCurrentUserPlaylists(req, res) {
+    let playlists = await siteService.getCurrentUserPlaylists();
+    console.log(JSON.stringify(playlists))
+}
+
+module.exports = { index, spotifyAuthCallback, getRecentPlayedTracks, getTopTracks, getCurrentUserPlaylists };

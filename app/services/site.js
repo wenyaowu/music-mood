@@ -14,6 +14,14 @@ async function exchangeAccessAndRefreshToken(code) {
     }
 }
 
+async function getCurrentUserInfo() {
+    try {
+        return await spotify.getCurrentUserInfo();
+    } catch (err) {
+        throw Error('Error while getting current user info', err.stack);
+    }
+}
+
 async function getRecentPlayedTracks() {
     const EXECUTIONS = 11;
     let results = [];
@@ -67,4 +75,11 @@ async function getTopTracks() {
     return results
 }
 
-module.exports = { exchangeAccessAndRefreshToken, getRecentPlayedTracks, getTopTracks };
+async function getCurrentUserPlaylists() {
+
+    return await spotify.getCurrentUserPlaylists();
+}
+
+
+
+module.exports = { exchangeAccessAndRefreshToken, getCurrentUserInfo, getRecentPlayedTracks, getTopTracks, getCurrentUserPlaylists };

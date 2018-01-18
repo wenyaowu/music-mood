@@ -5,9 +5,14 @@
 <p>Access Token: {{accessToken}}</p>
 <p id="show-list"></p>
 
+<div>
+    <button id="get-recent"> Retrieve Your Recent Played Tracks </button>
+    <button id="get-top-tracks"> Retrieve Your Top Played Tracks </button>
+</div>
+<div>
+    <button id="get-playlists"> Retrieve Your Playlists </button>
+</div>
 
-<button id="get-recent"> Retrieve Your Recent Played Tracks </button>
-<button id="get-top-tracks"> Retrieve Your Top Played Tracks </button>
 
 
 <script>
@@ -25,6 +30,16 @@
     $('#get-top-tracks').click(function(){
         $.ajax({
             url : '/get-top-tracks',
+            success : function(data){
+                $('#show-list').html(data);
+            },
+            error : function() {
+                console.log('error');
+            }
+        })
+    });$('#get-playlists').click(function(){
+        $.ajax({
+            url : '/get-playlists',
             success : function(data){
                 $('#show-list').html(data);
             },
