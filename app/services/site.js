@@ -15,7 +15,7 @@ async function exchangeAccessAndRefreshToken(code) {
 }
 
 async function getRecentPlayedTracks() {
-    const EXECUTIONS = 10;
+    const EXECUTIONS = 11;
     let results = [];
     let reducePromise = _.range(EXECUTIONS).reduce((promise) => {
         return promise.then((result) => {

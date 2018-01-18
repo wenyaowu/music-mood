@@ -1,21 +1,22 @@
-<h1>Tracks</h1>
+<h1>Recently Played Tracks</h1>
 <p> Total of {{num}} Tracks</p>
 <table>
-    <tr>
+    <tr style="color: blue">
         <th> Name </th>
         <th> Artist </th>
+        <th> Played At</th>
     </tr>
     {{#tracks}}
-    <tr>
         <tr>
             <th>{{track.name}}</th>
 
             <th>
                 {{#track.artists}}
-                    <p>{{name}}</p>
+                    {{name}} </br>
                 {{/track.artists}}
             </th>
+
+            <th>{{played_at}}</th>
         </tr>
-    </tr>
     {{/tracks}}
 </table>

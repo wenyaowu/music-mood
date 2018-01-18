@@ -52,6 +52,9 @@ const spotify = function(options) {
             let params = {
                 method : 'GET',
                 uri : nextUrl ? nextUrl : `${API_URI}/me/player/recently-played`,
+                qs : {
+                    limit: 50
+                },
                 json : true,
                 headers : {
                     "Authorization" : `Bearer ${ACCESS_TOKEN}`
@@ -64,7 +67,7 @@ const spotify = function(options) {
                     reject(`Error while exchanging token, statusCode: ${response.statusCode}`);
                 } else {
                     resolve({
-                        tracks : body['items'].map((i)=> {return i.track}),
+                        tracks : body['items'],
                         nextUrl : body['next']
                     });
                 }
@@ -78,6 +81,9 @@ const spotify = function(options) {
                 method : 'GET',
                 uri : nextUrl ? nextUrl :`${API_URI}/me/top/tracks`,
                 json : true,
+                qs : {
+                    limit: 50
+                },
                 headers : {
                     "Authorization" : `Bearer ${ACCESS_TOKEN}`
                 }

@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7c2edb7b-9ae9-4c85-bfbb-3201a03b4ddd" name="Default" comment="">
       <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/tracksList.mustache" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/historyTracksList.mustache" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/controllers/site.js" afterPath="$PROJECT_DIR$/app/controllers/site.js" />
       <change beforePath="$PROJECT_DIR$/app/external-services/spotify.js" afterPath="$PROJECT_DIR$/app/external-services/spotify.js" />
-      <change beforePath="$PROJECT_DIR$/app/routes/site.js" afterPath="$PROJECT_DIR$/app/routes/site.js" />
       <change beforePath="$PROJECT_DIR$/app/services/site.js" afterPath="$PROJECT_DIR$/app/services/site.js" />
       <change beforePath="$PROJECT_DIR$/app/views/index.mustache" afterPath="$PROJECT_DIR$/app/views/index.mustache" />
+      <change beforePath="$PROJECT_DIR$/app/views/tracksList.mustache" afterPath="$PROJECT_DIR$/app/views/tracksList.mustache" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="site.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="site.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="29" column="18" lean-forward="false" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+            <state relative-caret-position="245">
+              <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -34,39 +34,31 @@
       <file leaf-file-name="index.mustache" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/index.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="34" column="7" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+            <state relative-caret-position="9">
+              <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tracksList.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/tracksList.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="site.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/routes/site.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="63" lean-forward="false" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="site.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="site.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/services/site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="36" column="45" lean-forward="false" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+            <state relative-caret-position="67">
+              <caret line="36" column="30" lean-forward="false" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="historyTracksList.mustache" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/historyTracksList.mustache">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,8 +66,8 @@
       <file leaf-file-name="spotify.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/external-services/spotify.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="90" column="20" lean-forward="false" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
+            <state relative-caret-position="331">
+              <caret line="69" column="46" lean-forward="false" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -116,9 +108,10 @@
         <option value="$PROJECT_DIR$/app/routes/site.js" />
         <option value="$PROJECT_DIR$/app/views/index.mustache" />
         <option value="$PROJECT_DIR$/app/external-services/spotify.js" />
-        <option value="$PROJECT_DIR$/app/services/site.js" />
-        <option value="$PROJECT_DIR$/app/views/tracksList.mustache" />
         <option value="$PROJECT_DIR$/app/controllers/site.js" />
+        <option value="$PROJECT_DIR$/app/views/tracksList.mustache" />
+        <option value="$PROJECT_DIR$/app/views/historyTracksList.mustache" />
+        <option value="$PROJECT_DIR$/app/services/site.js" />
       </list>
     </option>
   </component>
@@ -316,7 +309,7 @@
       <workItem from="1516218539670" duration="300000" />
       <workItem from="1516221988529" duration="112000" />
       <workItem from="1516228540180" duration="3397000" />
-      <workItem from="1516235944575" duration="10494000" />
+      <workItem from="1516235944575" duration="12402000" />
     </task>
     <task id="LOCAL-00001" summary="update authentication flow">
       <created>1516213478867</created>
@@ -360,11 +353,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516253421391</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Templating for track lists. Make it prettierrrrr">
+      <created>1516255506449</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1516255506449</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20475000" />
+    <option name="totallyTimeSpent" value="22383000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -420,7 +420,8 @@
     <MESSAGE value="Add session using redis" />
     <MESSAGE value="Add recent play track call" />
     <MESSAGE value="Finish recent played tracks logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish recent played tracks logic" />
+    <MESSAGE value="Templating for track lists. Make it prettierrrrr" />
+    <option name="LAST_COMMIT_MESSAGE" value="Templating for track lists. Make it prettierrrrr" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -692,14 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/external-services/spotify.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="90" column="20" lean-forward="false" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/routes/site.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -708,34 +701,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/site.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="36" column="45" lean-forward="false" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/index.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="34" column="7" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/tracksList.mustache">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        <state relative-caret-position="270">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="29" column="18" lean-forward="false" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+        <state relative-caret-position="245">
+          <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/index.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/external-services/spotify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="69" column="46" lean-forward="false" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/historyTracksList.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/site.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="36" column="30" lean-forward="false" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
           <folding />
         </state>
       </provider>
