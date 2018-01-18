@@ -1,14 +1,24 @@
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
 
 
 <p>You have successfully authorized through spotify</p>
 <p>Access Token: {{accessToken}}</p>
+<p id="top-list"></p>
 
 
-<button id="retrieve-top"> Retrieve Your Top Artists and Tracks </button>
+<button id="get-top"> Retrieve Your Top Artists and Tracks </button>
 
 
 <script>
-    $('#retrieve-top').click(function(){
-
+    $('#get-top').click(function(){
+        $.ajax({
+            url : '/get-recent-played',
+            success : function(data){
+                $('#top-list').html(data);
+            },
+            error : function() {
+                console.log('error');
+            }
+        })
     })
 </script>

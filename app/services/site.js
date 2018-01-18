@@ -6,7 +6,6 @@ const spotify = require('../external-services/spotify')({
 });
 
 async function exchangeAccessAndRefreshToken(code) {
-
     try {
         return await spotify.auth(code);
     } catch (err) {
@@ -14,4 +13,12 @@ async function exchangeAccessAndRefreshToken(code) {
     }
 }
 
-module.exports = { exchangeAccessAndRefreshToken };
+async function getRecentPlayedTracks() {
+    try {
+        return await spotify.getRecentPlayedTracks();
+    } catch (err) {
+        throw new Error('Error while retrieving data from Spotify');
+    }
+}
+
+module.exports = { exchangeAccessAndRefreshToken, getRecentPlayedTracks };

@@ -10,7 +10,7 @@ function index(req, res){
                 client_id : config.spotify.clientId,
                 response_type : 'code',
                 redirect_uri : encodeURIComponent(config.spotify.redirectUrl),
-                scope : encodeURIComponent('user-read-private,user-read-email')
+                scope : encodeURIComponent('user-read-private,user-read-email, user-top-read, user-read-recently-played')
             }
         });
 
@@ -28,4 +28,9 @@ async function spotifyAuthCallback(req, res){
     }
 }
 
-module.exports = { index, spotifyAuthCallback };
+async function getRecentPlayedTracks(req, res) {
+    let response = await siteService.getRecentPlayedTracks();
+    res.send(response);
+}
+
+module.exports = { index, spotifyAuthCallback, getRecentPlayedTracks };
