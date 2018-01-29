@@ -40,7 +40,19 @@ async function getTopTracks(req, res) {
 
 async function getCurrentUserPlaylists(req, res) {
     let playlists = await siteService.getCurrentUserPlaylists();
-    console.log(JSON.stringify(playlists))
+    res.render('playlistDropdownSection', { playlists: playlists });
 }
 
-module.exports = { index, spotifyAuthCallback, getRecentPlayedTracks, getTopTracks, getCurrentUserPlaylists };
+async function getPlaylistTrackByHref(req, res) {
+    let href = req.query.href;
+    if(!href) {
+        return res.status(400).send('Please provide valid href'); //TODO: Move validation to middleware
+    }
+    let playlistTracks = await siteService.getPlaylistTracksByHref(href);
+    let tracks = playlistTracks.map((pt)=>{
+       return pt.track;
+    });
+    res.render('tracksList', { tracks: tracks, num : tracks.length });
+}
+
+module.exports = { index, spotifyAuthCallback, getRecentPlayedTracks, getTopTracks, getCurrentUserPlaylists, getPlaylistTrackByHref };

@@ -1,51 +1,44 @@
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<head>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <p>You have successfully authorized through spotify</p>
+    <p>Access Token: {{accessToken}}</p>
+    <div id="playlists-dropdown-section"></div>
+    <div>
+        <button id="get-playlists" class="btn btn-outline-primary"> Retrieve Your Playlists </button>
+    </div>
+</body>
 
-
-<p>You have successfully authorized through spotify</p>
-<p>Access Token: {{accessToken}}</p>
-<p id="show-list"></p>
-
-<div>
-    <button id="get-recent"> Retrieve Your Recent Played Tracks </button>
-    <button id="get-top-tracks"> Retrieve Your Top Played Tracks </button>
-</div>
-<div>
-    <button id="get-playlists"> Retrieve Your Playlists </button>
-</div>
 
 
 
 <script>
-    $('#get-recent').click(function(){
-        $.ajax({
-            url : '/get-recent-played',
-            success : function(data){
-                $('#show-list').html(data);
-            },
-            error : function() {
-                console.log('error');
-            }
-        })
-    });
-    $('#get-top-tracks').click(function(){
-        $.ajax({
-            url : '/get-top-tracks',
-            success : function(data){
-                $('#show-list').html(data);
-            },
-            error : function() {
-                console.log('error');
-            }
-        })
-    });$('#get-playlists').click(function(){
+    $('#get-playlists').click(function(){
         $.ajax({
             url : '/get-playlists',
             success : function(data){
-                $('#show-list').html(data);
+                $('#playlists-dropdown-section').html(data);
             },
             error : function() {
                 console.log('error');
             }
         })
     });
+
+
+    $(document).on("click", '#submit-playlist', function(event) {
+        var tracksHref = $("#playlists-select").val();
+        $.ajax({
+            url : '/get-playlist-tracks-by-href?href=' + tracksHref,
+            success : function(data){
+                $('#playlist').html(data);
+            },
+            error : function() {
+                console.log('error');
+            }
+        })
+    });
+
 </script>

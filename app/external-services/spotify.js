@@ -144,6 +144,25 @@ const spotify = function(options) {
         })
     }
 
+    function getPlaylistTracksByHref(href){
+        return new Promise(function(resolve, reject){
+            let params = {
+                method : 'GET',
+                uri : href,
+                json : true,
+                qs : {
+                    limit: 50
+                },
+                headers : {
+                    "Authorization" : `Bearer ${ACCESS_TOKEN}`
+                }
+            };
+            request(params, function(error, response, body){
+                onResponse(error, body, [], params, resolve, reject)
+            })
+        })
+    }
+
     function onResponse(err, body, results, params, resolve, reject) {
         if (err) {
             reject(err)
@@ -164,7 +183,7 @@ const spotify = function(options) {
         }
     }
 
-    return { auth, getRecentPlayedTracks, getTopTracks, getCurrentUserInfo, getCurrentUserPlaylists }
+    return { auth, getRecentPlayedTracks, getTopTracks, getCurrentUserInfo, getCurrentUserPlaylists, getPlaylistTracksByHref }
 };
 
 module.exports = spotify;

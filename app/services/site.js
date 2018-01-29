@@ -76,10 +76,13 @@ async function getTopTracks() {
 }
 
 async function getCurrentUserPlaylists() {
-
     return await spotify.getCurrentUserPlaylists();
+}
+
+async function getPlaylistTracksByHref(href) {
+    return await spotify.getPlaylistTracksByHref(href)
 }
 
 
 
-module.exports = { exchangeAccessAndRefreshToken, getCurrentUserInfo, getRecentPlayedTracks, getTopTracks, getCurrentUserPlaylists };
+module.exports = { exchangeAccessAndRefreshToken, getCurrentUserInfo, getRecentPlayedTracks, getTopTracks, getCurrentUserPlaylists, getPlaylistTracksByHref };
