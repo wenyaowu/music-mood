@@ -4,7 +4,9 @@
 </head>
 <body>
     <p>You have successfully authorized through spotify</p>
-    <p>Access Token: {{accessToken}}</p>
+    <p>Spotify Access Token: {{spotifyAccessToken}}</p>
+    <p>Last.fm Access Token: {{lastfmAccessToken}}</p>
+    <a class="btn btn-outline-primary" href="{{lastfmAuthUrl}}">Last.fm Authentication</a>
     <div id="playlists-dropdown-section"></div>
     <div>
         <button id="get-playlists" class="btn btn-outline-primary"> Retrieve Your Playlists </button>
@@ -34,11 +36,16 @@
             url : '/get-playlist-tracks-by-href?href=' + tracksHref,
             success : function(data){
                 $('#playlist').html(data);
+                $('#start-analyze-btn').attr("style", "");
             },
             error : function() {
                 console.log('error');
             }
         })
     });
+
+
+
+
 
 </script>

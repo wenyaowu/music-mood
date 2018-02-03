@@ -21,6 +21,7 @@ nconf.file('global', {file: path.join(__dirname, `${config.environment}.json`)})
 
 config.spotify = nconf.get('spotify');
 config.redis = nconf.get('redis');
+config.lastfm = nconf.get('lastfm');
 
 config.express = {
     port : process.env.EXPRESS_PORT || 8090
